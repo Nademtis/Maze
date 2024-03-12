@@ -1,0 +1,32 @@
+body {
+  background-color: #888;
+  color: #8d8;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#grid_table {
+  border-collapse: collapse;
+}
+.cell {
+  width: 1.8em;
+  height: 1.8em;
+  background-color: #48484c;
+}
+.wallRight {
+  border-right: rgb(187, 180, 180) solid 0.3em;
+}
+.wallLeft {
+  border-left: rgb(187, 180, 180) solid 0.3em;
+}
+.wallTop {
+  border-top: rgb(187, 180, 180) solid 0.3em ;
+}
+.wallButtom {
+  border-bottom: rgb(187, 180, 180) solid 0.3em;
+}
+.visited{
+  background-color: green;
+}
+.goal{
+  background-color: rgb(209, 85, 28);
+}

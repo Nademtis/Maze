@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ModelViewController</title>
+    <link rel="stylesheet" href="view/style.css" />
+  </head>
+  <body>
+    <h1>Maze</h1>
+    <div id="grid_container">
+      <table id="grid_table">
+        <tr>
+          <td class="cell wallRight wallTop visited wallLeft"></td>
+          <td class="cell wallLeft wallRight wallTop"></td>
+          <td class="cell wallTop"></td>
+          <td class="cell wallTop wallRight"></td>
+        </tr>
+        <tr>
+          <td class="cell wallRight wallLeft"></td>
+          <td class="cell wallRight"></td>
+          <td class="cell"></td>
+          <td class="cell wallTop wallRight goal"></td>
+        </tr>
+        <tr>
+          <td class="cell wallButtom wallLeft"></td>
+          <td class="cell wallButtom"></td>
+          <td class="cell wallButtom"></td>
+          <td class="cell wallButtom wallRight"></td>
+        </tr>
+      </table>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
