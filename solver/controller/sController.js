@@ -1,6 +1,6 @@
 "use strict"
 
-import Model from "../model/model.js"
+import Model from "../model/sModel.js"
 import View from "../../view/view.js"
 
 class Cell {
@@ -11,7 +11,7 @@ class Cell {
     }
 }
 
-export default class Controller {
+export default class sController {
     constructor() {
         this.model = new Model()
         this.view = new View(this)
@@ -25,7 +25,7 @@ export default class Controller {
             //start the blind depthFirst
             await this.depthFirst(this.model.start.row, this.model.start.col)
             //this.view.printMaze(maze, this.model.route, this.model.start, this.model.goal)
-            console.log(this.model.route);
+            //console.log(this.model.route);
 
         } catch (error) {
             console.error(error);
