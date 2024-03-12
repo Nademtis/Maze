@@ -6,6 +6,10 @@ export default class Model {
         this.start = [{ "row": 0, "col": 0 }]
         this.goal = [{ "row": 3, "col": 6 }]
         this.maze = [[]]
+        this.route = []
+    }
+    addToRoute(cell){
+        this.route.push(cell)
     }
 
     async initMaze() {
