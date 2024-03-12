@@ -1,6 +1,6 @@
 export default class Model {
     constructor() {
-        this.jsonFilePath = './model/maze.json';
+        this.jsonFilePath = "maze.json";
         this.rowAmount = 2
         this.colAmount = 0
         this.start = [{ "row": 0, "col": 0 }]

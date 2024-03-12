@@ -1,7 +1,7 @@
 "use strict"
 
 import Model from "../model/model.js"
-import View from "../view/view.js"
+import View from "../../view/view.js"
 
 class Cell {
     constructor(r, c, visited) {
@@ -25,6 +25,7 @@ export default class Controller {
             //start the blind depthFirst
             await this.depthFirst(this.model.start.row, this.model.start.col)
             //this.view.printMaze(maze, this.model.route, this.model.start, this.model.goal)
+            console.log(this.model.route);
 
         } catch (error) {
             console.error(error);
@@ -36,7 +37,7 @@ export default class Controller {
             return false;
         }
 
-        await new Promise(resolve => setTimeout(resolve, 250)); // for hyggens skyld
+        await new Promise(resolve => setTimeout(resolve, 50)); // for hyggens skyld
 
         const maze = this.model.maze; // for at slippe for at skrive this.model hver gang
 
@@ -52,16 +53,19 @@ export default class Controller {
         }
 
         if (maze[row][col].north == false && await this.depthFirst(row - 1, col)) {
-            console.log("should move up");
+            //console.log("should move up");
             return true;
-        } else if (maze[row][col].east == false && await this.depthFirst(row, col + 1)) {
-            console.log("should move right");
+        }
+        if (maze[row][col].east == false && await this.depthFirst(row, col + 1)) {
+            //console.log("should move right");
             return true;
-        } else if (maze[row][col].south == false && await this.depthFirst(row + 1, col)) {
-            console.log("should move down");
+        }
+        if (maze[row][col].south == false && await this.depthFirst(row + 1, col)) {
+            //console.log("should move down");
             return true;
-        } else if (maze[row][col].west == false && await this.depthFirst(row, col - 1)) {
-            console.log("should move left");
+        }
+        if (maze[row][col].west == false && await this.depthFirst(row, col - 1)) {
+            //console.log("should move left");
             return true;
         }
 

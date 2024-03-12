@@ -1,6 +1,6 @@
 "use strict"
 
-import Controller from "./controller/controller.js";
+import Controller from "./solver/controller/controller.js";
 
 window.addEventListener("load", start);
 
