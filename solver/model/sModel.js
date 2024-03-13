@@ -8,12 +8,17 @@ export default class Model {
         this.maze = [[]]
         this.route = []
     }
-    addToRoute(cell){
+    addToRoute(cell) {
         this.route.push(cell)
     }
 
-    async initMaze() {
-        let json = await this.readJsonFile()
+    async initMaze(mazeJson) {
+        let json
+        if (mazeJson) {
+            json = mazeJson  //if mazeJson is parsed with, it uses that maze instead of maze.json
+        } else {
+            json = await this.readJsonFile()
+        }
         this.rowAmount = json.rows
         this.colAmount = json.cols
         this.start = json.start

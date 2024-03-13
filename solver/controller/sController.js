@@ -16,10 +16,10 @@ export default class sController {
         this.model = new Model()
         this.view = new View(this)
     }
-    async init() {
+    async init(mazeJson) {  //if mazeJson is parsed with, it uses that maze instead of maze.json
         try {
             //init and print the maze
-            let maze = await this.model.initMaze();
+            let maze = await this.model.initMaze(mazeJson);
             this.view.printMaze(maze, this.model.route, this.model.start, this.model.goal)
 
             //start the blind depthFirst

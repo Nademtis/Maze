@@ -9,9 +9,11 @@ const solveController = new sController()
 const generationController = new gController()
 
 function start() {
-    generationController.sayHello()
+    generationController.wilsons()
+    let mazeJson = generationController.packIntoJson();
+    //console.log(mazeJson)
     //generationController should make a new maze
     //when it's done - the solveController takes over
 
-    solveController.init()
+    solveController.init(mazeJson) //if mazeJson is parsed with, it uses that maze instead of maze.json
 }
