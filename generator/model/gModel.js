@@ -12,6 +12,7 @@ export default class gModel {
                 this.maze[r][c].visited = false //mark all cells as unvisited
             }
         }
+        
     }
     getRandomUnvisitedCell() {
         let randomRowIndex = Math.floor(Math.random() * this.maze.length)

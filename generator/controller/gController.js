@@ -11,32 +11,35 @@ export default class gController {
     }
     wilsons() {
 
-        this.model.initMaze(5, 5) //init grid
+        this.model.initMaze(8, 8) //init grid
         //console.log(this.model.maze);
 
-        /*do {
-            this.model.getRandomUnvisitedCell()
-
-        }while(!this.model.allCellsAreVisited())*/
         let firstCell = this.model.getRandomUnvisitedCell() //choose random start
-        console.log(firstCell);
         //this.model.visitCell(firstCell.row, firstCell.col)  // mark as visited
 
-        let randCell = this.model.getRandomUnvisitedCell()  //choose random unvisited cell in grid = randCell
-        console.log(randCell);
-        let randomWalk = [randCell]
-        let neighbor
-
-        //console.log(neighbor);
+        let neighbor = this.model.getRandomUnvisitedCell()  //choose random unvisited cell in grid = randCell
+        let randomWalk = [neighbor]
 
         do {
-            neighbor = this.model.getRandomUnvisitedNeighbor(randCell.row, randCell.col)
-            randomWalk.push(neighbor)
-            randCell = neighbor
-        } while (randCell.row !== firstCell.row || randCell.col !== firstCell.col) //this should be: while (neighbor is not randomWalk[0])
-        
+            neighbor = this.model.getRandomUnvisitedNeighbor(neighbor.row, neighbor.col)
 
-        for (const cell of randomWalk){
+            //check if neighbor is already in randomWalk List
+            for (let i = 0; i < randomWalk.length; i++) {
+                if (randomWalk[i].row == neighbor.row && randomWalk[i].col == neighbor.col) {
+                    //if yes, remove from that index until this index
+                    console.log("hit the same");
+                    randomWalk.length = i //cut the extra
+                }
+            }
+            randomWalk.push(neighbor)
+            if (this.model.maze[neighbor.row][neighbor.col].visited) {
+                console.log("hit firstCell");
+            }
+        } while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col)
+        //while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col) //This works with just firstWalk
+
+
+        for (const cell of randomWalk) {
             this.model.maze[cell.row][cell.col].visited = true
         }
         console.log(randomWalk);
@@ -55,7 +58,9 @@ export default class gController {
         //repeat until all cells are visited
 
         //choose random start and end. (all the cells er connected with this algorithm- nice)
+
         this.packIntoJson()
+
     }
     packIntoJson() {
         //TODO remember to: 
