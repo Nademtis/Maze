@@ -30,9 +30,9 @@ export default class View {
         if (inRoute) td.classList.add("visited");
 
         //if generation - if visited
-        if (maze[r][c].visited == true) {
-            td.classList.add("generation")
-        }
+        if (maze[r][c].visited == true) 
+            //td.classList.add("generation")
+        
 
         //if start or goal
         if (r == start.row && c == start.col) td.classList.add("visited")

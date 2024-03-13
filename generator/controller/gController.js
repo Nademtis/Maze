@@ -11,7 +11,7 @@ export default class gController {
     }
     wilsons() {
 
-        this.model.initMaze(8, 8) //init grid
+        this.model.initMaze(20, 20) //init grid
         //console.log(this.model.maze);
 
         let firstCell = this.model.getRandomUnvisitedCell() //choose random start
@@ -27,7 +27,7 @@ export default class gController {
             for (let i = 0; i < randomWalk.length; i++) {
                 if (randomWalk[i].row == neighbor.row && randomWalk[i].col == neighbor.col) {
                     //if yes, remove from that index until this index
-                    console.log("hit the same");
+                    //console.log("hit the same");
                     randomWalk.length = i //cut the extra
                 }
             }
@@ -39,28 +39,47 @@ export default class gController {
         //while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col) //This works with just firstWalk
 
 
+        //in random walk, remove walls between cells (remember to remove the walls on both cells)
         for (const cell of randomWalk) {
             this.model.maze[cell.row][cell.col].visited = true
         }
+
         console.log(randomWalk);
-        //this.model.visitCell(randCell.row, randCell.col)
-        //this.model.visitCell(neighbor.row, neighbor.col)
+
+        for (let i = 0; i < randomWalk.length - 1; i++) {
+            let nextCell = randomWalk[i + 1]
+
+            //next is east
+            if (randomWalk[i].col < nextCell.col) {
+                this.model.maze[randomWalk[i].row][randomWalk[i].col].east = false
+                this.model.maze[nextCell.row][nextCell.col].west = false
+            }
+            //next is west
+            if (randomWalk[i].col > nextCell.col) {
+                this.model.maze[randomWalk[i].row][randomWalk[i].col].west = false
+                this.model.maze[nextCell.row][nextCell.col].east = false
+            }
+            //next is north
+            if (randomWalk[i].row > nextCell.row) {
+                this.model.maze[randomWalk[i].row][randomWalk[i].col].north = false
+                this.model.maze[nextCell.row][nextCell.col].south = false
+            }
+            //next is south
+            if (randomWalk[i].row < nextCell.row) {
+                this.model.maze[randomWalk[i].row][randomWalk[i].col].south = false
+                this.model.maze[nextCell.row][nextCell.col].north = false
+            }
+            
+
+        }
 
 
-        //perform random walk from randCell to any visited cell ()
-
-
-
-
-        //in random walk, remove walls between cells (remember to remove the walls on both cells)
-        //mark all the traversed cells as visited
 
         //repeat until all cells are visited
 
         //choose random start and end. (all the cells er connected with this algorithm- nice)
 
         this.packIntoJson()
-
     }
     packIntoJson() {
         //TODO remember to: 
