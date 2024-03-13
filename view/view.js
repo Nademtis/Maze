@@ -28,7 +28,11 @@ export default class View {
         // if in route
         const inRoute = route.some(cell => cell.row === r && cell.col === c);
         if (inRoute) td.classList.add("visited");
-        
+
+        //if generation - if visited
+        if (maze[r][c].visited == true) {
+            td.classList.add("generation")
+        }
 
         //if start or goal
         if (r == start.row && c == start.col) td.classList.add("visited")

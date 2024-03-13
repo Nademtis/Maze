@@ -71,7 +71,7 @@ export default class sController {
 
         // hvis den ikke kan gå videre, så fjern forkert rute/celle fra route
         this.model.route.pop();
-        console.log("Backtrack from", row, col);
+        //console.log("Backtrack from", row, col);
         return false;
     }
 
