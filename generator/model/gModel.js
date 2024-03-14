@@ -38,10 +38,10 @@ export default class gModel {
     }
     getRandomUnvisitedNeighbor(r, c) {
         const direction = [
-            { row: r - 1, col: c }, // up
-            { row: r, col: c + 1 }, // right
-            { row: r + 1, col: c }, // down
-            { row: r, col: c - 1 }  // left
+            { row: r - 1, col: c }, // north
+            { row: r, col: c + 1 }, // east
+            { row: r + 1, col: c }, // south
+            { row: r, col: c - 1 }  // west
         ];
 
         //fik denne shuffle metode fra chatGPT
@@ -61,6 +61,7 @@ export default class gModel {
                     return dir;
                 } else {
                     console.log("This cell has  been visited before");
+                    return dir;
                 }
             }
         }

@@ -15,10 +15,15 @@ export default class gController {
         //console.log(this.model.maze);
 
         let firstCell = this.model.getRandomUnvisitedCell() //choose random start
-        //this.model.visitCell(firstCell.row, firstCell.col)  // mark as visited
+        this.model.visitCell(firstCell.row, firstCell.col)  // mark as visited
 
-        let neighbor = this.model.getRandomUnvisitedCell()  //choose random unvisited cell in grid = randCell
-        let randomWalk = [neighbor]
+
+        
+        let neighbor = this.model.getRandomUnvisitedCell()  //choose random unvisited cell in grid
+        let randomWalk = [neighbor] //randomWalk is a list of cells from neighbor to any visited cell
+
+        console.log(firstCell);
+        console.log(neighbor);
 
         do {
             neighbor = this.model.getRandomUnvisitedNeighbor(neighbor.row, neighbor.col)
@@ -35,9 +40,9 @@ export default class gController {
             if (this.model.maze[neighbor.row][neighbor.col].visited) {
                 console.log("hit firstCell");
             }
-        } while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col)
+        } while (this.model.maze[neighbor.row][neighbor.col].visited == false)
         //while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col) //This works with just firstWalk
-
+        // this.model.maze[neighbor.row][neighbor.col].visited == false
 
         //in random walk, remove walls between cells (remember to remove the walls on both cells)
         for (const cell of randomWalk) {
@@ -46,6 +51,8 @@ export default class gController {
 
         console.log(randomWalk);
 
+
+        //this for-loop removes walls, there are 2 lines in each if- because walls needs to be removed on both adjacent cells
         for (let i = 0; i < randomWalk.length - 1; i++) {
             let nextCell = randomWalk[i + 1]
 
