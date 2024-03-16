@@ -31,7 +31,7 @@ export default class View {
 
         //if generation - if visited
         if (maze[r][c].visited == true) 
-            td.classList.add("generation")
+            //td.classList.add("generation")
         
 
         //if start or goal
