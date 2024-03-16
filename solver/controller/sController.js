@@ -37,7 +37,7 @@ export default class sController {
             return false;
         }
 
-        await new Promise(resolve => setTimeout(resolve, 50)); // for hyggens skyld
+        await new Promise(resolve => setTimeout(resolve, 20)); // for hyggens skyld
 
         const maze = this.model.maze; // for at slippe for at skrive this.model hver gang
 

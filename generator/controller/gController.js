@@ -8,7 +8,7 @@ export default class gController {
     }
     wilsons() {
 
-        this.model.initMaze(8, 8) //init grid
+        this.model.initMaze(50, 50) //init grid
         //console.log(this.model.maze);
         console.log(this.model.unVisitedCells);
 

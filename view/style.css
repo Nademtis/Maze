@@ -8,21 +8,21 @@ body {
   border-collapse: collapse;
 }
 .cell {
-  width: 1.8em;
-  height: 1.8em;
+  width: 0.7em;
+  height: 0.7em;
   background-color: #48484c;
 }
 .wallRight {
-  border-right: rgb(187, 180, 180) solid 0.3em;
+  border-right: rgb(187, 180, 180) solid 0.15em;
 }
 .wallLeft {
-  border-left: rgb(187, 180, 180) solid 0.3em;
+  border-left: rgb(187, 180, 180) solid 0.15em;
 }
 .wallTop {
-  border-top: rgb(187, 180, 180) solid 0.3em ;
+  border-top: rgb(187, 180, 180) solid 0.15em ;
 }
 .wallButtom {
-  border-bottom: rgb(187, 180, 180) solid 0.3em;
+  border-bottom: rgb(187, 180, 180) solid 0.15em;
 }
 .visited{
   background-color: green;
