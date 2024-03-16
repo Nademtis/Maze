@@ -18,9 +18,10 @@ export default class gModel {
         let randomRowIndex = Math.floor(Math.random() * this.maze.length)
         let randomColIndex = Math.floor(Math.random() * this.maze[0].length)
 
-
+        
         if (this.maze[randomRowIndex][randomColIndex].visited == true) {
             console.log(randomRowIndex + " " + randomColIndex + " has been visited before");
+            return this.getRandomUnvisitedCell()
         } else {
             //this.maze[randomRowIndex][randomColIndex].visited = true // should probably not visit here
             //console.log(randomRowIndex + " " + randomColIndex);

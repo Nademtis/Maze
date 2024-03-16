@@ -11,75 +11,72 @@ export default class gController {
     }
     wilsons() {
 
-        this.model.initMaze(20, 20) //init grid
+        this.model.initMaze(15, 15) //init grid
         //console.log(this.model.maze);
 
         let firstCell = this.model.getRandomUnvisitedCell() //choose random start
         this.model.visitCell(firstCell.row, firstCell.col)  // mark as visited
 
+        //while (this.model.allCellsAreVisited) {
 
         
-        let neighbor = this.model.getRandomUnvisitedCell()  //choose random unvisited cell in grid
-        let randomWalk = [neighbor] //randomWalk is a list of cells from neighbor to any visited cell
+            let neighbor = this.model.getRandomUnvisitedCell() //choose random unvisited cell in grid
+            let randomWalk = [neighbor] //randomWalk is a list of cells from neighbor to any visited cell
 
-        console.log(firstCell);
-        console.log(neighbor);
+            console.log(firstCell);
+            console.log(neighbor);
 
-        do {
-            neighbor = this.model.getRandomUnvisitedNeighbor(neighbor.row, neighbor.col)
+            do {
+                neighbor = this.model.getRandomUnvisitedNeighbor(neighbor.row, neighbor.col)
 
-            //check if neighbor is already in randomWalk List
-            for (let i = 0; i < randomWalk.length; i++) {
-                if (randomWalk[i].row == neighbor.row && randomWalk[i].col == neighbor.col) {
-                    //if yes, remove from that index until this index
-                    //console.log("hit the same");
-                    randomWalk.length = i //cut the extra
+                //check if neighbor is already in randomWalk List
+                for (let i = 0; i < randomWalk.length; i++) {
+                    if (randomWalk[i].row == neighbor.row && randomWalk[i].col == neighbor.col) {
+                        //if yes, remove from that index until this index
+                        //console.log("hit the same");
+                        randomWalk.length = i //cut the extra
+                    }
+                }
+                randomWalk.push(neighbor)
+                if (this.model.maze[neighbor.row][neighbor.col].visited) {
+                    console.log("hit firstCell");
+                }
+            } while (this.model.maze[neighbor.row][neighbor.col].visited == false)
+
+            //set visited
+            for (const cell of randomWalk) {
+                this.model.maze[cell.row][cell.col].visited = true
+            }
+
+            console.log(randomWalk);
+
+
+            //this for-loop removes walls, there are 2 lines in each if- because walls needs to be removed on both adjacent cells
+            for (let i = 0; i < randomWalk.length - 1; i++) {
+                let nextCell = randomWalk[i + 1]
+
+                //next is east
+                if (randomWalk[i].col < nextCell.col) {
+                    this.model.maze[randomWalk[i].row][randomWalk[i].col].east = false
+                    this.model.maze[nextCell.row][nextCell.col].west = false
+                }
+                //next is west
+                if (randomWalk[i].col > nextCell.col) {
+                    this.model.maze[randomWalk[i].row][randomWalk[i].col].west = false
+                    this.model.maze[nextCell.row][nextCell.col].east = false
+                }
+                //next is north
+                if (randomWalk[i].row > nextCell.row) {
+                    this.model.maze[randomWalk[i].row][randomWalk[i].col].north = false
+                    this.model.maze[nextCell.row][nextCell.col].south = false
+                }
+                //next is south
+                if (randomWalk[i].row < nextCell.row) {
+                    this.model.maze[randomWalk[i].row][randomWalk[i].col].south = false
+                    this.model.maze[nextCell.row][nextCell.col].north = false
                 }
             }
-            randomWalk.push(neighbor)
-            if (this.model.maze[neighbor.row][neighbor.col].visited) {
-                console.log("hit firstCell");
-            }
-        } while (this.model.maze[neighbor.row][neighbor.col].visited == false)
-        //while (neighbor.row !== firstCell.row || neighbor.col !== firstCell.col) //This works with just firstWalk
-        // this.model.maze[neighbor.row][neighbor.col].visited == false
-
-        //in random walk, remove walls between cells (remember to remove the walls on both cells)
-        for (const cell of randomWalk) {
-            this.model.maze[cell.row][cell.col].visited = true
-        }
-
-        console.log(randomWalk);
-
-
-        //this for-loop removes walls, there are 2 lines in each if- because walls needs to be removed on both adjacent cells
-        for (let i = 0; i < randomWalk.length - 1; i++) {
-            let nextCell = randomWalk[i + 1]
-
-            //next is east
-            if (randomWalk[i].col < nextCell.col) {
-                this.model.maze[randomWalk[i].row][randomWalk[i].col].east = false
-                this.model.maze[nextCell.row][nextCell.col].west = false
-            }
-            //next is west
-            if (randomWalk[i].col > nextCell.col) {
-                this.model.maze[randomWalk[i].row][randomWalk[i].col].west = false
-                this.model.maze[nextCell.row][nextCell.col].east = false
-            }
-            //next is north
-            if (randomWalk[i].row > nextCell.row) {
-                this.model.maze[randomWalk[i].row][randomWalk[i].col].north = false
-                this.model.maze[nextCell.row][nextCell.col].south = false
-            }
-            //next is south
-            if (randomWalk[i].row < nextCell.row) {
-                this.model.maze[randomWalk[i].row][randomWalk[i].col].south = false
-                this.model.maze[nextCell.row][nextCell.col].north = false
-            }
-            
-
-        }
-
+        //}
 
 
         //repeat until all cells are visited
