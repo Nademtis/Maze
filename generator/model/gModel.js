@@ -6,6 +6,8 @@ export default class gModel {
     }
 
     initMaze(rowAmount, colAmount) {
+        this.maze = [[]] //need to reset, just in case user generates new maze
+        this.unVisitedCells = []  //need to reset, just in case user generates new maze
         for (let r = 0; r < rowAmount; r++) {
             this.maze[r] = [colAmount]
             for (let c = 0; c < colAmount; c++) {

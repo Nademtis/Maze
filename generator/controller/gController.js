@@ -6,9 +6,9 @@ export default class gController {
         //this.view = new View(this)
 
     }
-    wilsons() {
+    wilsons(width, height) {
 
-        this.model.initMaze(50, 50) //init grid
+        this.model.initMaze(width, height) //init grid
         //console.log(this.model.maze);
         console.log(this.model.unVisitedCells);
 

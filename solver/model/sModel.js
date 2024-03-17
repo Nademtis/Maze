@@ -1,7 +1,7 @@
 export default class Model {
     constructor() {
         this.jsonFilePath = "maze.json";
-        this.rowAmount = 2
+        this.rowAmount = 0
         this.colAmount = 0
         this.start = [{ "row": 0, "col": 0 }]
         this.goal = [{ "row": 3, "col": 6 }]
@@ -11,8 +11,18 @@ export default class Model {
     addToRoute(cell) {
         this.route.push(cell)
     }
+    resetMaze(){
+        this.jsonFilePath = "maze.json";
+        this.rowAmount = 0
+        this.colAmount = 0
+        this.start = [{ "row": 0, "col": 0 }]
+        this.goal = [{ "row": 3, "col": 6 }]
+        this.maze = [[]]
+        this.route = []
+    }
 
     async initMaze(mazeJson) {
+        this.resetMaze()
         let json
         if (mazeJson) {
             json = mazeJson  //if mazeJson is parsed with, it uses that maze instead of maze.json

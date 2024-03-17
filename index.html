@@ -8,9 +8,23 @@
   </head>
   <body>
     <h1>Maze</h1>
+    <h3>Start by generating a new maze</h3>
+    <h5>Please input height and width below :) - then press generate </h5>
+    <div style="padding: 5px;">
+      <form id="generateNewMazeForm">
+        <input class="inputHeight" placeholder="height" type="number" required />
+        <input class="inputWidth" placeholder="width" type="number" required />
+        <button type="submit">Generate New Maze using Wilsons Algorithm</button>
+      </form>
+    </div>
+    <div style="padding: 5px;">
+      <form id="startSolving">
+        <button type="submit">Solve the maze using depth First</button>
+      </form>
+    </div>
     <div id="grid_container">
       <table id="grid_table">
-        <tr>
+        <!--<tr>
           <td class="cell wallRight wallTop visited wallLeft"></td>
           <td class="cell wallLeft wallRight wallTop"></td>
           <td class="cell wallTop"></td>
@@ -27,7 +41,7 @@
           <td class="cell wallButtom"></td>
           <td class="cell wallButtom"></td>
           <td class="cell wallButtom wallRight"></td>
-        </tr>
+        </tr>-->
       </table>
     </div>
     <script type="module" src="main.js"></script>

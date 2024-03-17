@@ -23,7 +23,7 @@ export default class sController {
             this.view.printMaze(maze, this.model.route, this.model.start, this.model.goal)
 
             //start the blind depthFirst
-            await this.depthFirst(this.model.start.row, this.model.start.col)
+            //await this.depthFirst(this.model.start.row, this.model.start.col)
             //this.view.printMaze(maze, this.model.route, this.model.start, this.model.goal)
             //console.log(this.model.route);
 
@@ -31,13 +31,16 @@ export default class sController {
             console.error(error);
         }
     }
+    async solveMaze(){
+        await this.depthFirst(this.model.start.row, this.model.start.col)
+    }
     async depthFirst(row, col) {
         if (this.model.route.some(cell => cell.row === row && cell.col === col)) {
-            console.log("already visited");
+            //console.log("already visited");
             return false;
         }
 
-        await new Promise(resolve => setTimeout(resolve, 20)); // for hyggens skyld
+        await new Promise(resolve => setTimeout(resolve, 1)); // for hyggens skyld
 
         const maze = this.model.maze; // for at slippe for at skrive this.model hver gang
 
